@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Le Mastermind du GOAT</title>
+    <script type="module" crossorigin src="main.js"></script>
+    <link rel="stylesheet" crossorigin href="styles.css">
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <header class="header">
+          <h1 class="title">Mastermind</h1>
+          <p class="subtitle">Devinez la combinaison secrète</p>
+        </header>
+
+        <div class="settings-panel">
+          <div class="setting-group">
+            <label for="difficulty">Difficulté:</label>
+            <select id="difficulty" class="select-input">
+              <option value="4">Facile (4 couleurs)</option>
+              <option value="5">Moyen (5 couleurs)</option>
+              <option value="6" selected>Difficile (6 couleurs)</option>
+            </select>
+          </div>
+          <div class="setting-group">
+            <label for="maxAttempts">Essais max:</label>
+            <select id="maxAttempts" class="select-input">
+              <option value="8">8 essais</option>
+              <option value="10" selected>10 essais</option>
+              <option value="12">12 essais</option>
+            </select>
+          </div>
+          <button id="newGameBtn" class="btn btn-primary">Nouvelle Partie</button>
+        </div>
+
+        <div class="game-info">
+          <div class="info-item">
+            <span class="info-label">Essai:</span>
+            <span id="currentAttempt" class="info-value">1</span>
+            <span class="info-label">/ <span id="maxAttemptsDisplay">10</span></span>
+          </div>
+        </div>
+
+        <div class="game-board">
+          <div class="color-picker">
+            <h3 class="picker-title">Choisissez vos couleurs:</h3>
+            <div id="colorPalette" class="color-palette"></div>
+          </div>
+
+          <div class="current-guess">
+            <h3 class="guess-title">Votre proposition:</h3>
+            <div id="currentGuessSlots" class="guess-slots"></div>
+            <button id="submitGuess" class="btn btn-submit" disabled>Valider</button>
+          </div>
+
+          <div class="history">
+            <h3 class="history-title">Historique des tentatives:</h3>
+            <div id="historyList" class="history-list"></div>
+          </div>
+        </div>
+
+        <div id="gameMessage" class="game-message hidden"></div>
+      </div>
+    </div>
+  </body>
+</html>
