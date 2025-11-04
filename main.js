@@ -43,6 +43,7 @@ class MastermindGame {
   constructor(codeLength = 4, maxAttempts = 10) {
     this.codeLength = codeLength;
     this.maxAttempts = maxAttempts;
+    this.colorCount = DIFFICULTY_CONFIG[codeLength]?.colorCount || 5;
     this.secretCode = [];
     this.currentAttempt = 0;
     this.attempts = [];
@@ -53,7 +54,7 @@ class MastermindGame {
   generateSecretCode() {
     this.secretCode = Array.from(
       { length: this.codeLength },
-      () => Math.floor(Math.random() * 6)
+      () => Math.floor(Math.random() * this.colorCount)
     );
     this.currentAttempt = 0;
     this.attempts = [];
@@ -118,19 +119,29 @@ class MastermindGame {
   reset(codeLength, maxAttempts) {
     this.codeLength = codeLength;
     this.maxAttempts = maxAttempts;
+    this.colorCount = DIFFICULTY_CONFIG[codeLength]?.colorCount || 5;
     this.generateSecretCode();
   }
 }
 
-// 🎨 Palette de couleurs
+// 🎨 Palette de couleurs complète
 const COLORS = [
   { name: "Rouge", hex: "#ef4444", id: 0 },
   { name: "Bleu", hex: "#3b82f6", id: 1 },
   { name: "Vert", hex: "#22c55e", id: 2 },
   { name: "Jaune", hex: "#eab308", id: 3 },
   { name: "Orange", hex: "#f97316", id: 4 },
-  { name: "Rose", hex: "#ec4899", id: 5 }
+  { name: "Rose", hex: "#ec4899", id: 5 },
+  { name: "Violet", hex: "#a855f7", id: 6 },
+  { name: "Cyan", hex: "#06b6d4", id: 7 },
+  { name: "Marron", hex: "#92400e", id: 8 }
 ];
+
+const DIFFICULTY_CONFIG = {
+  2: { colorCount: 3, label: "Facile (2 emplacements, 3 couleurs)" },
+  4: { colorCount: 5, label: "Moyen (4 emplacements, 5 couleurs)" },
+  6: { colorCount: 9, label: "Difficile (6 emplacements, 9 couleurs)" }
+};
 
 // 🧩 Interface utilisateur du jeu
 class MastermindUI {
@@ -155,7 +166,8 @@ class MastermindUI {
 
   renderColorPalette() {
     this.colorPalette.innerHTML = "";
-    COLORS.forEach(color => {
+    const activeColors = COLORS.slice(0, this.game.colorCount);
+    activeColors.forEach(color => {
       const btn = document.createElement("button");
       btn.className = "color-btn";
       btn.style.backgroundColor = color.hex;
@@ -188,7 +200,7 @@ class MastermindUI {
   }
 
   addColorToGuess(colorId) {
-    if (this.currentGuess.length < this.game.codeLength && !this.game.gameOver) {
+    if (this.currentGuess.length < this.game.codeLength && !this.game.gameOver && colorId < this.game.colorCount) {
       this.currentGuess.push(colorId);
       this.renderGuessSlots();
     }
@@ -318,7 +330,7 @@ class MastermindUI {
 }
 
 // 🚀 Initialisation du jeu
-const game = new MastermindGame(4, 10);
+const game = new MastermindGame(6, 10);
 game.generateSecretCode();
 
 const ui = new MastermindUI(game);
