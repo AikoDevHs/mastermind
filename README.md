@@ -1,4 +1,4 @@
-#🎯 Mastermind du GOAT
+# 🎯 Mastermind du GOAT
 
 Bienvenue dans Le Mastermind du GOAT, une adaptation moderne et interactive du célèbre jeu de logique Mastermind réalisée en JavaScript, HTML et CSS.
 Affrontez le code secret du jeu et testez votre sens de la déduction !
