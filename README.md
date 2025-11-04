@@ -92,7 +92,7 @@ Dans l’historique, tu verras :
 ### Option 1 — 💻 Ouvrir localement
 1. Télécharge ou clone le projet :
    ```bash
-   git clone https://github.com/ton-repo/mastermind.git
+   git clone https://github.com/AikoDevHs/mastermind.git
    ```
 2.  Ouvre le fichier index.html dans ton navigateur.
 3. Joue directement ! 🥳
