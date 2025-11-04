@@ -1,64 +1,98 @@
-# 🎯 Mastermind du GOAT
+# 🎯 **Mastermind du GOAT**
 
-Bienvenue dans Le Mastermind du GOAT, une adaptation moderne et interactive du célèbre jeu de logique Mastermind réalisée en JavaScript, HTML et CSS.
-Affrontez le code secret du jeu et testez votre sens de la déduction !
+> Une adaptation moderne du jeu de logique classique — conçue avec **JavaScript**, **HTML** et **CSS**.  
+> Teste ta logique, ta mémoire, et ton sens de la déduction pour trouver la combinaison secrète avant la fin !
 
-🧠 Principe du jeu
+---
 
-Le but du Mastermind est simple : deviner la combinaison secrète de couleurs générée aléatoirement par le jeu.
+## 🧠 **Principe du jeu**
 
-Vous devez trouver la bonne combinaison dans un nombre limité d’essais.
+Le but du jeu est simple : **deviner la combinaison secrète de couleurs** générée par l’ordinateur.
 
-À chaque tentative, le jeu vous indique :
+🔹 À chaque tentative :
+- ✅ Tu sauras combien de couleurs sont **bien placées**.  
+- ~ Tu découvriras combien de couleurs sont **correctes mais mal placées**.
 
-✅ Combien de couleurs sont bien placées.
+💡 Utilise ces indices pour **déduire la bonne combinaison** avant d’épuiser tes essais !
 
-~ Combien de couleurs sont correctes mais mal placées.
+---
 
-Utilisez ces indices pour affiner votre prochaine proposition et trouver le code secret avant d’épuiser vos essais !
+## 🕹️ **Comment jouer**
 
-🕹️ Comment jouer
+### 🎚️ 1. Choisis ta difficulté
+| Niveau | Emplacements | Couleurs disponibles |
+|:-------|:--------------|:--------------------|
+| 🟢 Facile | 2 | 3 |
+| 🟡 Moyen | 4 | 5 |
+| 🔴 Difficile | 6 | 9 |
 
-Choisissez la difficulté
+---
 
-Sélectionnez la longueur du code et le nombre de couleurs possibles :
+### 🔢 2. Choisis le nombre d’essais  
+Tu peux sélectionner : **8**, **10** ou **12** tentatives maximum.
 
-🟢 Facile → 2 emplacements, 3 couleurs
+---
 
-🟡 Moyen → 4 emplacements, 5 couleurs
+### 🚀 3. Démarre une nouvelle partie  
+Appuie sur **“Nouvelle Partie”** pour générer un nouveau code secret.
 
-🔴 Difficile → 6 emplacements, 9 couleurs
+---
 
-Choisissez le nombre d’essais
+### 🎨 4. Compose ta combinaison  
+- Clique sur les couleurs dans la **palette** pour remplir les emplacements.  
+- Clique sur une case déjà remplie pour **retirer** la couleur.
 
-Vous pouvez sélectionner entre 8, 10 ou 12 tentatives maximum.
+---
 
-Démarrez une nouvelle partie
+### 🧩 5. Valide ta proposition  
+- Clique sur **“Valider”** ou appuie sur **Entrée** pour confirmer ton essai.
 
-Cliquez sur "Nouvelle Partie" pour générer un nouveau code secret.
+---
 
-Composez votre combinaison
+### 📜 6. Analyse les résultats  
+Dans l’historique, tu verras :
+- La **combinaison proposée** 🎨  
+- Le nombre de couleurs **bien placées** ✅  
+- Le nombre de couleurs **mal placées** ~
 
-Cliquez sur les couleurs de la palette pour remplir les emplacements.
+---
 
-Cliquez sur un emplacement déjà rempli pour retirer une couleur.
+### 🏁 7. Fin de partie  
+- 🎉 **Victoire** : tu as trouvé la combinaison !  
+- 😔 **Défaite** : le jeu révèle le code secret.
 
-Validez votre proposition
+---
 
-Cliquez sur "Valider" (ou appuyez sur Entrée) pour soumettre votre essai.
+### 💻 Technologies utilisées
+| Langage | Rôle |
+|:--------|:------|
+| 🧱 **HTML** | Structure du jeu |
+| 🎨 **CSS** | Styles, couleurs et mise en page |
+| ⚙️ **JavaScript** | Logique, génération du code secret, interactions UI |
 
-Analysez le résultat
+---
 
-L’historique affiche :
+### 🧩 Classes principales
 
-La combinaison que vous avez proposée.
+#### 🧠 `MastermindGame`
+- Gère la **logique du jeu**
+- Génère le **code secret**
+- Vérifie les **propositions**
+- Gère les **tentatives et la victoire/défaite**
 
-Le nombre de couleurs bien placées ✅.
+#### 💡 `MastermindUI`
+- Gère l’**interface utilisateur**
+- Met à jour la **palette**, les **tentatives**, et les **messages**
+- Permet de **jouer de manière interactive**
 
-Le nombre de couleurs mal placées ~.
+---
 
-Gagnez ou perdez
+## 🚀 **Lancer le jeu**
 
-Si vous trouvez toutes les couleurs au bon endroit → 🎉 Victoire !
-
-Si vous n’y parvenez pas avant la fin des essais → 😔 Défaite (le code secret sera révélé).
+### Option 1 — 💻 Ouvrir localement
+1. Télécharge ou clone le projet :
+   ```bash
+   git clone https://github.com/ton-repo/mastermind.git
+   ```
+2.  Ouvre le fichier index.html dans ton navigateur.
+3. Joue directement ! 🥳
