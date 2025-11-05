@@ -1,98 +1,108 @@
-# 🎯 **Mastermind du GOAT**
+# 🎯 Mastermind du GOAT
 
 > Une adaptation moderne du jeu de logique classique — conçue avec **JavaScript**, **HTML** et **CSS**.  
-> Teste ta logique, ta mémoire, et ton sens de la déduction pour trouver la combinaison secrète avant la fin !
+> Devine la combinaison secrète avant d’épuiser tes essais !
 
 ---
 
-## 🧠 **Principe du jeu**
+## 🧠 Principe du jeu
+Le but : **deviner la combinaison secrète de couleurs** générée aléatoirement.
 
-Le but du jeu est simple : **deviner la combinaison secrète de couleurs** générée par l’ordinateur.
+À chaque tentative tu obtiens :
+- ✅ Le nombre de couleurs **bien placées**.  
+- 🔁 Le nombre de couleurs **présentes mais mal placées**.
 
-🔹 À chaque tentative :
-- ✅ Tu sauras combien de couleurs sont **bien placées**.  
-- ~ Tu découvriras combien de couleurs sont **correctes mais mal placées**.
-
-💡 Utilise ces indices pour **déduire la bonne combinaison** avant d’épuiser tes essais !
-
----
-
-## 🕹️ **Comment jouer**
-
-### 🎚️ 1. Choisis ta difficulté
-| Niveau | Emplacements | Couleurs disponibles |
-|:-------|:--------------|:--------------------|
-| 🟢 Facile | 2 | 3 |
-| 🟡 Moyen | 4 | 5 |
-| 🔴 Difficile | 6 | 9 |
+Utilise ces indices pour affiner tes suppositions.
 
 ---
 
-### 🔢 2. Choisis le nombre d’essais  
-Tu peux sélectionner : **8**, **10** ou **12** tentatives maximum.
+## 🕹️ Comment jouer
+
+### 1️⃣ Choisir la difficulté  
+La difficulté règle le nombre d’emplacements (longueur du code) **et** le nombre de couleurs disponibles :
+
+| Niveau     | Emplacements (codeLength) | Couleurs disponibles |
+|:----------:|:-------------------------:|:--------------------:|
+| 🟢 Facile     | 2                         | 3                    |
+| 🟡 Moyen      | 4                         | 5                    |
+| 🔴 Difficile  | 6                         | 9                    |
+
+> **Remarque technique :** le mapping utilisé dans le code est défini par l’objet :
+> ```js
+> const DIFFICULTY = {
+>   2: { colorCount: 3 },
+>   4: { colorCount: 5 },
+>   6: { colorCount: 9 }
+> };
+> ```
 
 ---
 
-### 🚀 3. Démarre une nouvelle partie  
-Appuie sur **“Nouvelle Partie”** pour générer un nouveau code secret.
+### 2️⃣ Choisir le nombre d’essais  
+Options disponibles : **8**, **10** ou **12** (la valeur par défaut dans le code est 10).
 
 ---
 
-### 🎨 4. Compose ta combinaison  
-- Clique sur les couleurs dans la **palette** pour remplir les emplacements.  
-- Clique sur une case déjà remplie pour **retirer** la couleur.
+### 3️⃣ Démarrer une nouvelle partie  
+Clique sur **"Nouvelle Partie"** pour générer un nouveau code secret et réinitialiser l’historique.
 
 ---
 
-### 🧩 5. Valide ta proposition  
-- Clique sur **“Valider”** ou appuie sur **Entrée** pour confirmer ton essai.
+### 4️⃣ Composer une combinaison  
+- Clique sur une couleur dans la **palette** pour la placer dans le prochain emplacement libre.  
+- Clique sur une case remplie pour la **retirer**.
 
 ---
 
-### 📜 6. Analyse les résultats  
-Dans l’historique, tu verras :
-- La **combinaison proposée** 🎨  
+### 5️⃣ Valider une proposition  
+- Clique sur **"Valider"** ou appuie sur **Entrée** (si le bouton n’est pas désactivé) pour soumettre ta proposition.
+
+---
+
+### 6️⃣ Interpréter le résultat  
+L’historique affiche pour chaque tentative :
+- La combinaison jouée 🎨  
 - Le nombre de couleurs **bien placées** ✅  
-- Le nombre de couleurs **mal placées** ~
+- Le nombre de couleurs **mal placées** 🔁
 
 ---
 
-### 🏁 7. Fin de partie  
-- 🎉 **Victoire** : tu as trouvé la combinaison !  
-- 😔 **Défaite** : le jeu révèle le code secret.
+### 7️⃣ Fin de partie  
+- 🎉 **Victoire** : toutes les couleurs sont bien placées.  
+- 😔 **Défaite** : le jeu révèle le code secret (visible uniquement à la fin).
 
 ---
 
-### 💻 Technologies utilisées
-| Langage | Rôle |
-|:--------|:------|
-| 🧱 **HTML** | Structure du jeu |
-| 🎨 **CSS** | Styles, couleurs et mise en page |
-| ⚙️ **JavaScript** | Logique, génération du code secret, interactions UI |
+## ⚙️ Structure du code
+
+Les classes du code réel sont :  
+- **`Game`** → logique du jeu  
+- **`UI`** → interface utilisateur  
+
+### 🧠 Classe `Game`
+- Génère le **code secret** aléatoire  
+- Vérifie les **propositions du joueur**  
+- Gère le nombre d’essais et la **victoire/défaite**
+
+### 💡 Classe `UI`
+- Gère l’**interface graphique**  
+- Met à jour la **palette**, les **emplacements**, et l’**historique**  
+- Gère les interactions : clics, validation, et nouvelle partie
 
 ---
 
-### 🧩 Classes principales
+## 🧩 Fichiers du projet
 
-#### 🧠 `MastermindGame`
-- Gère la **logique du jeu**
-- Génère le **code secret**
-- Vérifie les **propositions**
-- Gère les **tentatives et la victoire/défaite**
-
-#### 💡 `MastermindUI`
-- Gère l’**interface utilisateur**
-- Met à jour la **palette**, les **tentatives**, et les **messages**
-- Permet de **jouer de manière interactive**
+| Fichier | Rôle |
+|:--------|:-----|
+| `index.html` | Structure du jeu |
+| `styles.css` | Styles et mise en page |
+| `main.js` | Logique du jeu (classes `Game` et `UI`) |
+| `README.md` | Documentation du projet |
 
 ---
 
-## 🚀 **Lancer le jeu**
-
-### Option 1 — 💻 Ouvrir localement
-1. Télécharge ou clone le projet :
+## 🚀 Lancer le jeu (localement)
+1. Clone le dépôt :
    ```bash
    git clone https://github.com/AikoDevHs/mastermind.git
-   ```
-2.  Ouvre le fichier index.html dans ton navigateur.
-3. Joue directement ! 🥳
